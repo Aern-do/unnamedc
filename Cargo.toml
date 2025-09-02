@@ -1,0 +1,3 @@
+[workspace]
+members = ["compiler/unnamed-lexer"]
+resolver = "3"
