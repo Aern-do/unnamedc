@@ -2,7 +2,34 @@ use unnamed_common::{IntoReport, Source, SourceCache};
 use unnamed_lexer::Lexer;
 
 fn main() {
-    const SOURCE: Source = Source::new("0xff 120 0o11 0b101 fdf", "test.u");
+    const SOURCE: Source = Source::new(
+        r#"
+        trait Add {
+	        fn add(self, value: Self): Self;
+        }
+
+        func foo[N](lhs: N, rhs: N): N {
+	        if condition() {
+		        return bar(lhs, rhs);
+	        }
+    
+	        lhs
+        }
+
+        func bar[N](lhs: N, rhs: N): N {
+            if condition() {
+                foo(lhs, rhs)
+            } else {
+                lhs + rhs
+            }
+        }
+
+        func z[N](lhs: N): N {
+            bar(lhs, N::default())
+        }
+    "#,
+        "test.u",
+    );
 
     let mut source_cache = SourceCache::new();
     source_cache.insert(SOURCE);

@@ -89,10 +89,6 @@ impl<'s> Cursor<'s> {
 
         Ok(())
     }
-
-    // pub fn enter(&mut self) -> Handle<'s, '_> {
-    //     Handle::new(self)
-    // }
 }
 
 #[cfg(test)]
