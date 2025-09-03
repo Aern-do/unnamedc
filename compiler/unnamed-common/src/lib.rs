@@ -1,7 +1,9 @@
+pub mod interner;
 pub mod source;
 pub mod source_cache;
 pub mod span;
 
+pub use interner::{Interner, StrId};
 pub use source::{Source, SourceSpan};
 pub use source_cache::SourceCache;
 pub use span::{Position, Span};

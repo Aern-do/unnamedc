@@ -5,3 +5,5 @@ edition = "2024"
 
 [dependencies]
 ariadne = { workspace = true }
+papaya = "0.2.3"
+boxcar = "0.2.14"
