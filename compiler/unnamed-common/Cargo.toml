@@ -1,8 +1,7 @@
 [package]
-name = "unnamed-lexer"
+name = "unnamed-common"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-unnamed-common = { workspace = true }
 ariadne = { workspace = true }

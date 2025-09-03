@@ -1,0 +1,8 @@
+[package]
+name = "unnamedc"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+unnamed-lexer = { workspace = true }
+unnamed-common = { workspace = true }

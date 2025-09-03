@@ -1,3 +1,8 @@
 [workspace]
-members = ["compiler/unnamed-lexer"]
+members = ["compiler/unnamed-common", "compiler/unnamed-lexer", "unnamedc"]
 resolver = "3"
+
+[workspace.dependencies]
+unnamed-common = { path = "compiler/unnamed-common" }
+unnamed-lexer = { path = "compiler/unnamed-lexer" }
+ariadne = "0.5.1"
