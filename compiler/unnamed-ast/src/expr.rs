@@ -36,6 +36,7 @@ pub struct BinExpr {
 
 impl Spanned for BinExpr {
     type Ctx = AstCtx;
+
     fn span(&self, ctx: &Self::Ctx) -> Span {
         let lhs_span = ctx.exprs.map[self.lhs].span(ctx);
         let rhs_span = ctx.exprs.map[self.rhs].span(ctx);
