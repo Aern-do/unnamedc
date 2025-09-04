@@ -12,7 +12,7 @@ pub struct Span {
 }
 
 impl Span {
-    pub const DUMMY: Span = Span::new(0, 0);
+    pub const ZERO: Span = Span::new(0, 0);
 
     pub const fn new(start: usize, end: usize) -> Self {
         Self { start, end }
@@ -86,10 +86,6 @@ impl Display for Position {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "{}:{}", self.line, self.column)
     }
-}
-
-pub trait Spanned {
-    fn span(&self) -> Span;
 }
 
 #[cfg(test)]

@@ -37,7 +37,7 @@ impl Interner {
     }
 }
 
-pub static DEFAULT: LazyLock<Interner> = LazyLock::new(|| Interner::new());
+pub static DEFAULT: LazyLock<Interner> = LazyLock::new(Interner::new);
 
 #[cfg(test)]
 mod tests {

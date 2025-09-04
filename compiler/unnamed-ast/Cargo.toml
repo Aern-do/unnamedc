@@ -1,0 +1,8 @@
+[package]
+name = "unnamed-ast"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+unnamed-common = { workspace = true }
+cranelift-entity = { workspace = true }

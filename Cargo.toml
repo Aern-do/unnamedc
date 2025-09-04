@@ -1,8 +1,15 @@
 [workspace]
-members = ["compiler/unnamed-common", "compiler/unnamed-lexer", "unnamedc"]
+members = [ "compiler/unnamed-ast",
+    "compiler/unnamed-common",
+    "compiler/unnamed-lexer",
+    "compiler/unnamed-parser",
+    "unnamedc",
+]
 resolver = "3"
 
 [workspace.dependencies]
 unnamed-common = { path = "compiler/unnamed-common" }
 unnamed-lexer = { path = "compiler/unnamed-lexer" }
+unnamed-parser = { path = "compiler/unnamed-parser" }
 ariadne = "0.5.1"
+cranelift-entity = "0.123.2"

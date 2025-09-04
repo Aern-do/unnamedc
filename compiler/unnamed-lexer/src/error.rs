@@ -25,7 +25,7 @@ impl Error {
     }
 
     pub fn unexpected_eof() -> Self {
-        Self::new(Span::DUMMY, ErrorKind::UnexpectedEof)
+        Self::new(Span::ZERO, ErrorKind::UnexpectedEof)
     }
 }
 
