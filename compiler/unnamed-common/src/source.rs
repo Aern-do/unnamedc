@@ -101,25 +101,25 @@ mod tests {
 
     #[test]
     fn test_source_unknown() {
-        let source = Source::unknown("content");
+        let source = Source::new("content", "unknown");
         assert_eq!(source.content, "content");
-        assert_eq!(source.file_name, "UNKNOWN");
+        assert_eq!(source.file_name, "unknown");
     }
 
     #[test]
     fn test_position_from_span_single_line() {
         let content = "hello world";
-        let source = Source::unknown(content);
+        let source = Source::new(content, "unknown");
 
         let span = Span::new(0, 1);
-        let position = source.get_position(span);
+        let position = source.position(span);
         assert_eq!(position.line, 1);
         assert_eq!(position.column, 1);
         assert_eq!(position.line_start, 0);
         assert_eq!(position.line_end, 11);
 
         let span = Span::new(6, 7);
-        let position = source.get_position(span);
+        let position = source.position(span);
         assert_eq!(position.line, 1);
         assert_eq!(position.column, 7);
         assert_eq!(position.line_start, 0);
@@ -129,31 +129,31 @@ mod tests {
     #[test]
     fn test_position_from_span_multiple_lines() {
         let content = "first line\nsecond line\nthird line";
-        let source = Source::unknown(content);
+        let source = Source::new(content, "unknown");
 
         let span = Span::new(5, 6);
-        let position = source.get_position(span);
+        let position = source.position(span);
         assert_eq!(position.line, 1);
         assert_eq!(position.column, 6);
         assert_eq!(position.line_start, 0);
         assert_eq!(position.line_end, 10);
 
         let span = Span::new(11, 12);
-        let position = source.get_position(span);
+        let position = source.position(span);
         assert_eq!(position.line, 2);
         assert_eq!(position.column, 1);
         assert_eq!(position.line_start, 11);
         assert_eq!(position.line_end, 22);
 
         let span = Span::new(15, 16);
-        let position = source.get_position(span);
+        let position = source.position(span);
         assert_eq!(position.line, 2);
         assert_eq!(position.column, 5);
         assert_eq!(position.line_start, 11);
         assert_eq!(position.line_end, 22);
 
         let span = Span::new(22, 23);
-        let position = source.get_position(span);
+        let position = source.position(span);
         assert_eq!(position.line, 3);
         assert_eq!(position.column, 1);
         assert_eq!(position.line_start, 23);
@@ -163,32 +163,32 @@ mod tests {
     #[test]
     fn test_position_from_span_with_unicode() {
         let content = "Hello!\n🚀 Unicode test\nLine with café\nÑandú é açaí";
-        let source = Source::unknown(content);
+        let source = Source::new(content, "unknown");
 
         let span1 = Span::new(0, 1);
-        let pos1 = source.get_position(span1);
+        let pos1 = source.position(span1);
         assert_eq!(pos1, Position::new(1, 1, 0, 6));
 
         let span2 = Span::new(7, 11);
-        let pos2 = source.get_position(span2);
+        let pos2 = source.position(span2);
         assert_eq!(pos2, Position::new(2, 1, 7, 24));
 
         let span3 = Span::new(30, 32);
-        let pos3 = source.get_position(span3);
+        let pos3 = source.position(span3);
         assert_eq!(pos3, Position::new(3, 6, 25, 40));
 
         let span4 = Span::new(41, 43);
-        let pos4 = source.get_position(span4);
+        let pos4 = source.position(span4);
         assert_eq!(pos4, Position::new(4, 1, 41, 58));
     }
 
     #[test]
     fn test_position_from_span_empty_content() {
         let content = "";
-        let source = Source::unknown(content);
+        let source = Source::new(content, "unknown");
 
         let span = Span::new(0, 0);
-        let position = source.get_position(span);
+        let position = source.position(span);
         assert_eq!(position.line, 1);
         assert_eq!(position.column, 1);
         assert_eq!(position.line_start, 0);
