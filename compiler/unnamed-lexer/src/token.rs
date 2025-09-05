@@ -105,6 +105,8 @@ pub enum TokenKind {
     Colon,
     DoubleColon,
 
+    TrueKw,
+    FalseKw,
     FuncKw,
     TraitKw,
     ImplKw,

@@ -152,6 +152,9 @@ impl<'s> Lexer<'s> {
             "if" => TokenKind::IfKw,
             "else" => TokenKind::ElseKw,
             "return" => TokenKind::ReturnKw,
+            "true" => TokenKind::TrueKw,
+            "false" => TokenKind::FalseKw,
+
             _ => return Ok(Token::new(span, slice, TokenKind::Ident)),
         };
 
