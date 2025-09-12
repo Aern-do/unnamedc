@@ -1,6 +1,8 @@
 [workspace]
-members = [ "compiler/unnamed-ast",
+members = [
+    "compiler/unnamed-ast",
     "compiler/unnamed-common",
+    "compiler/unnamed-derive",
     "compiler/unnamed-lexer",
     "compiler/unnamed-parser",
     "unnamedc",
@@ -11,5 +13,6 @@ resolver = "3"
 unnamed-common = { path = "compiler/unnamed-common" }
 unnamed-lexer = { path = "compiler/unnamed-lexer" }
 unnamed-parser = { path = "compiler/unnamed-parser" }
+unnamed-derive = { path = "compiler/unnamed-derive" }
 ariadne = "0.5.1"
 cranelift-entity = "0.123.2"

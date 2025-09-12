@@ -5,4 +5,5 @@ edition = "2024"
 
 [dependencies]
 unnamed-common = { workspace = true }
+unnamed-derive = { workspace = true }
 cranelift-entity = { workspace = true }

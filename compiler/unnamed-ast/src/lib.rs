@@ -2,10 +2,11 @@ pub mod expr;
 pub mod ty;
 
 use cranelift_entity::{EntityList, entity_impl};
-use unnamed_common::{EntityArena, Span, Spanned, entity_list_span};
+use unnamed_common::{EntityArena, Span};
 
 pub use expr::{BinExpr, BinOp, Expr, StructFieldExpr};
 pub use ty::Type;
+use unnamed_derive::Spanned;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct ExprEntity(u32);
@@ -32,14 +33,9 @@ impl AstCtx {
     }
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Spanned, Debug, Clone, Copy, PartialEq, Eq)]
 pub struct Block {
     pub exprs: EntityList<ExprEntity>,
-}
-
-impl Spanned for Block {
-    type Ctx = AstCtx;
-    fn span(&self, ctx: &Self::Ctx) -> Span {
-        entity_list_span(self.exprs, &ctx.exprs, ctx)
-    }
+    #[span]
+    pub span: Span,
 }

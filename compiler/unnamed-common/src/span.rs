@@ -39,15 +39,11 @@ impl Add<Span> for Span {
     type Output = Span;
 
     fn add(self, rhs: Span) -> Self::Output {
-        if self.is_empty() {
-            return rhs;
+        match (self.is_empty(), rhs.is_empty()) {
+            (true, _) => rhs,
+            (_, true) => self,
+            _ => Span::new(self.start.min(rhs.start), self.end.max(rhs.end)),
         }
-
-        if rhs.is_empty() {
-            return self;
-        }
-
-        Span::new(self.start.min(rhs.start), self.end.max(rhs.end))
     }
 }
 
